@@ -1,0 +1,17 @@
+de\jos\project\controller\DiscordBot.class
+de\jos\project\model\MiteEntry$TimeEntry.class
+de\jos\project\model\ServiceResponse$Service.class
+de\jos\project\model\ServiceResponse.class
+de\jos\project\model\MiteEntry.class
+de\jos\project\model\ProjectResponse.class
+de\jos\project\controller\DiscordClient.class
+de\jos\project\Application.class
+de\jos\project\controller\ErrorControllerAdvice.class
+de\jos\project\controller\CommandHandler.class
+de\jos\project\model\Commands.class
+de\jos\project\model\User.class
+de\jos\project\model\ProjectResponse$Project.class
+de\jos\project\controller\MiteClient.class
+de\jos\project\exception\MessageHandlerException.class
+de\jos\project\controller\MainService.class
+de\jos\project\controller\MessageHandler.class
