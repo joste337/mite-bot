@@ -1,0 +1,9 @@
+
+Usquid:UnusedPrivateMethod"2Remove this unused private "buildFinalUrl" method.(öğ’
+R
+squid:S106"9Replace this use of System.out or System.err by a logger.(„ğ¥‡úÿÿÿÿ
+M
+squid:S106"9Replace this use of System.out or System.err by a logger.(å¾ıÍ
+Asquid:S1481"-Remove this unused "response" local variable.(ä‚e
+Psquid:S1854"<Remove this useless assignment to local variable "response".(ä‚e
+ssquid:S00116"XRename this field "MITE_BASE_URL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕŒÏşÿÿÿÿ
