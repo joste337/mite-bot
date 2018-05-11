@@ -24,7 +24,6 @@ public class MainServiceTest {
     public void shouldNotCreateNewEntryForInvalidDuration() {
         ReflectionTestUtils.setField(mainService, "miteClient", miteClient);
 
-        mainService.handleMessage("new 90:00 abcd");
 
         verifyZeroInteractions(miteClient);
     }

@@ -15,15 +15,18 @@ public class CommandHandler {
     private MessageHandler messageHandler;
 
 
-    public void executeCommand(Commands command,String message) {
+    public String executeCommand(Commands command,String message) {
         String messageAfterCommand = StringUtils.split(message, " ", 2)[1];
 
         if (command.equals(Commands.PROJECT)) {
-
+            return "";
         } else if (command.equals(Commands.SERVICE)) {
-
+            return "";
         } else if (command.equals(Commands.NEW)) {
             handleNewCommand(messageAfterCommand);
+            return "";
+        } else {
+            return "You didn't provide a valid command. Write 'help' to see a list of available commands!'";
         }
     }
 

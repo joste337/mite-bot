@@ -1,6 +1,8 @@
 package de.jos.project.model;
 
 
+import sx.blah.discord.handle.obj.IChannel;
+
 import javax.persistence.Entity;
 import java.util.UUID;
 import javax.persistence.Id;
@@ -13,9 +15,15 @@ public class User {
     private String projectID;
     private String serviceID;
 
-    public User(String apiToken) {
+    public User(String id) {
+        this.id = id;
+    }
+
+    public User(String id, String apiToken, String projectID, String serviceID) {
+        this.id = id;
         this.apiToken = apiToken;
-        this.id = UUID.randomUUID().toString();
+        this.projectID = projectID;
+        this.serviceID = serviceID;
     }
 
     public String getId() {
@@ -48,5 +56,10 @@ public class User {
 
     public void setServiceID(String serviceID) {
         this.serviceID = serviceID;
+    }
+
+
+    public String toSQLString() {
+        return "('" + this.id + "', '" + this.apiToken + "', '" + this.projectID + "', '" + this.serviceID + "')";
     }
 }

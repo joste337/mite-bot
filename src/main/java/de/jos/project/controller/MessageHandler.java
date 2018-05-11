@@ -17,6 +17,7 @@ public class MessageHandler {
     private static final Logger logger = LoggerFactory.getLogger(ErrorControllerAdvice.class);
 
     public Commands getCommand(String message) {
+
         String command = StringUtils.split(message, " ")[0];
 
 

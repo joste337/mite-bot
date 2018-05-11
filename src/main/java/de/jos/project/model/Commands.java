@@ -4,5 +4,7 @@ public enum Commands {
     EMPTY,
     NEW,
     SERVICE,
-    PROJECT
+    PROJECT,
+    HELP,
+    AUTHORIZE
 }

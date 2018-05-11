@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 public class MiteClient {
     private String miteUrl = "https://exozet.mite.yo.lk/projects.json?api_key=502e33dc65c3c4d2";
     private String miteUrl2 = "https://exozet.mite.yo.lk/services.json?api_key=502e33dc65c3c4d2";
-    private String MITE_BASE_URL = "https://exozet.mite.yo.lk/";
+    private final String MITE_BASE_URL = "https://exozet.mite.yo.lk/";
     private String mitePostUrl = "https://exozet.mite.yo.lk/time_entries.json?api_key=502e33dc65c3c4d2";
 
     private String mtr3ID = "2351287";
