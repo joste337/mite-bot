@@ -13,7 +13,7 @@ import sx.blah.discord.handle.obj.IChannel;
 
 @Component
 public class DiscordClient {
-    private final String TOKEN = "NDQzNzc1OTMzNzU3Nzg0MDY1.DdSXEg.Zvkv3DHddO8iQeAHJmDmzIpBStg";
+    private final String BOT_TOKEN = "NDQzNzc1OTMzNzU3Nzg0MDY1.DdSXEg.Zvkv3DHddO8iQeAHJmDmzIpBStg";
     private IDiscordClient iDiscordClient;
     private EventDispatcher dispatcher;
 
@@ -21,10 +21,12 @@ public class DiscordClient {
     private MainService mainService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private BotMessages botMessages;
 
     public DiscordClient() {
         ClientBuilder clientBuilder = new ClientBuilder();
-        clientBuilder.withToken(TOKEN);
+        clientBuilder.withToken(BOT_TOKEN);
         iDiscordClient = clientBuilder.login();
         dispatcher = iDiscordClient.getDispatcher();
         dispatcher.registerListener(this);
@@ -33,25 +35,18 @@ public class DiscordClient {
     @EventSubscriber
     public void onMessageReceivedEvent(MessageReceivedEvent event) {
         String userId = event.getAuthor().getName().hashCode() + event.getAuthor().getDiscriminator();
-        if (isNewUser(userId)) {
-            userRepository.insertNewUser(new User(userId));
-            sendMessage("Hello " + event.getAuthor().toString() + "! To help you get started, send me 'start'. :)", event.getChannel());
-        } else {
-            mainService.handleMessage(event.getMessage().getContent(), event.getChannel());
-        }
+        IChannel channel = event.getChannel();
 
+        if (!userRepository.existsById(userId)) {
+            User newUser = new User(userId, event.getAuthor().getName(), channel.getLongID());
+            userRepository.save(newUser);
+            sendMessage(botMessages.getNewUserReply(event.getAuthor().getName()), channel);
+        } else {
+            sendMessage(mainService.handleMessage(event.getMessage().getContent(), userRepository.findById(userId).get()), channel);
+        }
     }
 
-    public void sendMessage(String message, IChannel channel) {
+    private void sendMessage(String message, IChannel channel) {
         channel.sendMessage(message);
-    }
-
-
-    private boolean isNewUser(String id) {
-        if (userRepository.findUserByID(id) == null) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }

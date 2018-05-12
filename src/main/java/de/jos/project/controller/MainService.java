@@ -1,24 +1,42 @@
 package de.jos.project.controller;
 
-import de.jos.project.model.Commands;
+import de.jos.project.model.BotCommands;
+import de.jos.project.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import sx.blah.discord.handle.obj.IChannel;
+
+import java.util.Optional;
 
 
 @Component
 public class MainService {
     @Autowired
-    private MiteClient miteClient;
-    @Autowired
-    private DiscordClient discordClient;
-    @Autowired
     private MessageHandler messageHandler;
     @Autowired
-    private CommandHandler commandHandler;
+    private BotMessages botMessages;
 
-    public void handleMessage(String message, IChannel channel) {
-        Commands command = messageHandler.getCommand(message);
-        String returnMessage = commandHandler.executeCommand(command, message);
+    public String handleMessage(String message, User user) {
+        BotCommands command = messageHandler.getCommand(message);
+        return isVerifiedUser(user).orElse(messageHandler.executeCommand(command, message, user));
+    }
+
+    private Optional<String> isVerifiedUser(User user) {
+        String replyMessage = "";
+
+        if (user.getApiKey() == null) {
+            replyMessage += botMessages.getNoApiKeyProvidedReply() + "\n";
+        }
+        if (user.getProjectID() == null) {
+            replyMessage += botMessages.getNoProjectIdProvidedReply() + "\n";
+        }
+        if (user.getServiceID() == null) {
+            replyMessage += botMessages.getNoServideIdProvidedReply();
+        }
+
+        if (replyMessage.equals("")) {
+            return Optional.empty();
+        } else {
+            return Optional.of(replyMessage);
+        }
     }
 }

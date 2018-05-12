@@ -1,5 +1,6 @@
 package de.jos.project.controller;
 
+import de.jos.project.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,8 @@ public class MiteClientTest {
 
     @Test
     public void test() {
-        miteClient.getAvailableProjects();
+        User user = new User("","",2);
+        miteClient.getAvailableProjects(user);
     }
 
     @Test

@@ -1,44 +1,112 @@
 package de.jos.project.controller;
 
 
-import de.jos.project.model.Commands;
-import de.jos.project.exception.MessageHandlerException;
+import de.jos.project.database.UserRepository;
+import de.jos.project.model.BotCommands;
+import de.jos.project.model.User;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Component
 public class MessageHandler {
 
-    private static final Logger logger = LoggerFactory.getLogger(ErrorControllerAdvice.class);
+    @Autowired
+    private MiteClient miteClient;
+    @Autowired
+    private BotMessages botMessages;
+    @Autowired
+    private UserRepository userRepository;
 
-    public Commands getCommand(String message) {
+    private static final Logger logger = LoggerFactory.getLogger(MessageHandler.class);
 
+    public BotCommands getCommand(String message) {
         String command = StringUtils.split(message, " ")[0];
 
-
         switch(command) {
-            case("projekt"): return Commands.PROJECT;
-            case("new"): return Commands.NEW;
-            case("leistung"): return Commands.SERVICE;
+            case("project"): return BotCommands.PROJECT;
+            case("new"): return BotCommands.NEW;
+            case("service"): return BotCommands.SERVICE;
+            case("help"): return BotCommands.HELP;
+            case("auth"): return BotCommands.AUTHORIZE;
+            case("start"): return BotCommands.START;
+            default: return BotCommands.EMPTY;
         }
-
-        return Commands.EMPTY;
     }
 
-    public boolean isValidDuration(String duration) throws MessageHandlerException {
-        Pattern validDuration = Pattern.compile("[0-9]:[0-9]{2}");
-        Matcher validDurationMatcher = validDuration.matcher(duration);
-        if (validDurationMatcher.matches()) {
-            return true;
+    public String executeCommand(BotCommands command, String message, User user) {
+        int wordCount = StringUtils.split(message, " ").length;
+
+        if (command.equals(BotCommands.EMPTY)) {
+            return botMessages.getInvalidCommandReply();
+        } else if (command.equals(BotCommands.START)) {
+            return botMessages.getStartReply();
+        } else if (command.equals(BotCommands.PROJECT)) {
+            return handleProjectCommand(message, user, wordCount);
+        } else if (command.equals(BotCommands.SERVICE)) {
+            return handleServiceCommand(message, user, wordCount);
+        } else if (command.equals(BotCommands.HELP)) {
+            return botMessages.getHelpReply();
+        } else if (command.equals(BotCommands.AUTHORIZE)) {
+            if (wordCount < 2) {
+                return botMessages.getInvalidCommandReply();
+            } else {
+                return handleAuthorizeCommand(message, user);
+            }
+        } else if (command.equals(BotCommands.NEW)) {
+            if (wordCount < 3) {
+                return botMessages.getInvalidCommandReply();
+            } else {
+                return handleNewCommand(message, user);
+            }
         } else {
-            logger.error("Duration '" + duration + "' is not valid");
-            return false;
+            return botMessages.getInvalidCommandReply();
         }
+    }
+
+    private String handleServiceCommand(String message, User user, int wordCount) {
+        if (wordCount < 2) {
+            user.setServiceID(StringUtils.split(message, " ")[1]);
+            userRepository.save(user);
+            return botMessages.getSuccessfullySetServideIdReply();
+        } else {
+            return miteClient.getAvailableServices(user);
+        }
+    }
+
+    private String handleProjectCommand(String message, User user, int wordCount) {
+        if (wordCount < 2) {
+            user.setProjectID(StringUtils.split(message, " ")[1]);
+            userRepository.save(user);
+            return botMessages.getSuccessfullySetProjectIdReply();
+        } else {
+            return miteClient.getAvailableProjects(user);
+        }
+    }
+
+    private String handleAuthorizeCommand(String message, User user) {
+        String apiKey = StringUtils.split(message, " ")[1];
+        user.setApiKey(apiKey);
+        userRepository.save(user);
+        return botMessages.getSuccessfullyAuthorizedReply();
+    }
+
+    private String handleNewCommand(String message, User user) {
+        String duration = StringUtils.split(message, " ")[1];
+        if (!isValidDuration(duration)) {
+            return botMessages.getInvalidDurationReply(duration);
+        }
+        String comment = StringUtils.split(message, " ", 2)[2];
+        miteClient.createNewEntry(duration, comment);
+        return botMessages.getSuccessfullEntryReply(duration, comment);
+    }
+
+    private boolean isValidDuration(String duration) {
+        return Pattern.compile("[0-9]:[0-5][0-9]").matcher(duration).matches();
     }
 
 }

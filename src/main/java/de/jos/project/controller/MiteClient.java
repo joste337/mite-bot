@@ -4,6 +4,7 @@ package de.jos.project.controller;
 import de.jos.project.model.MiteEntry;
 import de.jos.project.model.ProjectResponse;
 import de.jos.project.model.ServiceResponse;
+import de.jos.project.model.User;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -41,19 +42,26 @@ public class MiteClient {
 
     }
 
-    public void getAvailableProjects() {
-        ProjectResponse[] projects = restTemplate.getForObject(miteUrl, ProjectResponse[].class);
+    public String getAvailableProjects(User user) {
+        String url = MITE_BASE_URL + "projects.json?api_key=" + user.getApiKey();
+        ProjectResponse[] projects = restTemplate.getForObject(url, ProjectResponse[].class);
+
+        String response = "";
         for (ProjectResponse projectResponse : projects) {
-            System.out.println(projectResponse.getProject().getName() + "; " + projectResponse.getProject().getId());
+            response += projectResponse.getProject().getName() + "; " + projectResponse.getProject().getId() + "\n";
         }
+        return response;
+    }
 
-        ServiceResponse[] serviceResponses = restTemplate.getForObject(miteUrl2, ServiceResponse[].class);
+    public String getAvailableServices(User user) {
+        String url = MITE_BASE_URL + "projects.json?api_key=" + user.getApiKey();
+        ServiceResponse[] serviceResponses = restTemplate.getForObject(url, ServiceResponse[].class);
+
+        String response = "";
         for (ServiceResponse serviceResponse : serviceResponses) {
-            System.out.println(serviceResponse.getService().getName() + "; " + serviceResponse.getService().getId());
+            response += serviceResponse.getService().getName() + "; " + serviceResponse.getService().getId() + "\n";
         }
+        return response;
     }
 
-    private String buildFinalUrl(String endpoint) {
-        return MITE_BASE_URL + endpoint;
-    }
 }

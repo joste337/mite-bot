@@ -1,7 +1,7 @@
 package de.jos.project.controller;
 
 
-import de.jos.project.model.Commands;
+import de.jos.project.model.BotCommands;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class MessageHandlerTest {
     @Test
     public void shouldReturnProjectCommand() {
 
-        Commands command = messageHandler.getCommand("projekt");
+        BotCommands command = messageHandler.getCommand("projekt");
 
-        assertEquals(Commands.PROJECT, command);
+        assertEquals(BotCommands.PROJECT, command);
     }
 }

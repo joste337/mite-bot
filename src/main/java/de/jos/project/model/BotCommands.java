@@ -1,7 +1,8 @@
 package de.jos.project.model;
 
-public enum Commands {
+public enum BotCommands {
     EMPTY,
+    START,
     NEW,
     SERVICE,
     PROJECT,

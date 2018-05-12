@@ -17,15 +17,15 @@ public class UserRepositoryTest {
 
     @Test
     public void test() throws Exception{
-        User user = new User("token");
+        User user = new User("token", "d", 2);
         user.setProjectID("aa");
         user.setServiceID("ab");
 
-        userRepository.insertNewUser(user);
+        userRepository.save(user);
 
 
         String sql = "SELECT * FROM User";
-        User user2 = userRepository.findUserByID(sql);
+        User user2 = userRepository.findById("d").get();
 
         System.out.println("user2: " + user2.toSQLString());
     }
