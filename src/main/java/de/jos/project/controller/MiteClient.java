@@ -54,6 +54,17 @@ public class MiteClient {
         return response;
     }
 
+    public String getAvailableProjectsByName(User user, String name) {
+        String url = MITE_BASE_URL + "projects.json?api_key=" + user.getApiKey() + "&name=" + name;
+        ProjectResponse[] projects = restTemplate.getForObject(url, ProjectResponse[].class);
+
+        String response = "";
+        for (ProjectResponse projectResponse : projects) {
+            response += projectResponse.getProject().getName() + "; " + projectResponse.getProject().getId() + "\n";
+        }
+        return response;
+    }
+
     public String getAvailableServices(User user) {
         String url = MITE_BASE_URL + "projects.json?api_key=" + user.getApiKey();
         ServiceResponse[] serviceResponses = restTemplate.getForObject(url, ServiceResponse[].class);

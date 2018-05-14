@@ -27,4 +27,14 @@ public class MiteClientTest {
 
         miteClient.createNewEntry("100", "mite bot test", user);
     }
+
+    @Test
+    public void filterProjects() {
+        User user = new User();
+        user.setApiKey("502e33dc65c3c4d2");
+
+        System.out.println(miteClient.getAvailableProjectsByName(user, "mtr3"));
+
+
+    }
 }
