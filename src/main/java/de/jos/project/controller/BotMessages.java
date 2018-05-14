@@ -51,4 +51,8 @@ public class BotMessages {
     public String getSuccessfullySetServideIdReply() {
         return "Your service-ID has been set successfully!";
     }
+
+    public String getSuccessfullySetProjectIdByNameReply(String projectName) {
+        return "Only one project found for specified name. So I set '" + projectName + "' as your default project!";
+    }
 }

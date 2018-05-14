@@ -1,10 +1,8 @@
 package de.jos.project.controller;
 
 
-import de.jos.project.model.MiteEntry;
-import de.jos.project.model.ProjectResponse;
-import de.jos.project.model.ServiceResponse;
-import de.jos.project.model.User;
+import de.jos.project.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -21,6 +19,9 @@ public class MiteClient {
 
     private String mtr3ID = "2351287";
     private String developmentID = "253445";
+
+    @Autowired
+    BotMessages botMessages;
 
 
 
@@ -58,6 +59,11 @@ public class MiteClient {
         String url = MITE_BASE_URL + "projects.json?api_key=" + user.getApiKey() + "&name=" + name;
         ProjectResponse[] projects = restTemplate.getForObject(url, ProjectResponse[].class);
 
+        if (projects.length == 1) {
+            user.setProjectID(projects[0].getProject().getId());
+            return botMessages.getSuccessfullySetProjectIdByNameReply(projects[0].getProject().getName());
+        }
+
         String response = "";
         for (ProjectResponse projectResponse : projects) {
             response += projectResponse.getProject().getName() + "; " + projectResponse.getProject().getId() + "\n";
@@ -67,10 +73,26 @@ public class MiteClient {
 
     public String getAvailableServices(User user) {
         String url = MITE_BASE_URL + "projects.json?api_key=" + user.getApiKey();
-        ServiceResponse[] serviceResponses = restTemplate.getForObject(url, ServiceResponse[].class);
+        ServiceResponse[] services = restTemplate.getForObject(url, ServiceResponse[].class);
 
         String response = "";
-        for (ServiceResponse serviceResponse : serviceResponses) {
+        for (ServiceResponse serviceResponse : services) {
+            response += serviceResponse.getService().getName() + "; " + serviceResponse.getService().getId() + "\n";
+        }
+        return response;
+    }
+
+    public String getAvailableServicesByName(User user, String name) {
+        String url = MITE_BASE_URL + "projects.json?api_key=" + user.getApiKey() + "&name=" + name;
+        ServiceResponse[] services = restTemplate.getForObject(url, ServiceResponse[].class);
+
+        if (services.length == 1) {
+            user.setServiceID(services[0].getService().getId());
+            return botMessages.getSuccessfullySetProjectIdByNameReply(services[0].getService().getName());
+        }
+
+        String response = "";
+        for (ServiceResponse serviceResponse : services) {
             response += serviceResponse.getService().getName() + "; " + serviceResponse.getService().getId() + "\n";
         }
         return response;
