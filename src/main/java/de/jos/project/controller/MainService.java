@@ -17,20 +17,32 @@ public class MainService {
 
     public String handleMessage(String message, User user) {
         BotCommands command = messageHandler.getCommand(message);
-        return isVerifiedUser(user).orElse(messageHandler.executeCommand(command, message, user));
+        return isNotVeriefiedUser(message, user, command).orElse(messageHandler.executeCommand(command, message, user));
     }
 
-    private Optional<String> isVerifiedUser(User user) {
+    private Optional<String> isNotVeriefiedUser(String message, User user, BotCommands command) {
         String replyMessage = "";
 
         if (user.getApiKey() == null) {
-            replyMessage += botMessages.getNoApiKeyProvidedReply() + "\n";
+            if (command.equals(BotCommands.AUTHORIZE)) {
+                replyMessage = messageHandler.executeCommand(command, message, user) + "\n";
+            } else {
+                replyMessage += botMessages.getNoApiKeyProvidedReply() + "\n";
+            }
         }
         if (user.getProjectID() == null) {
-            replyMessage += botMessages.getNoProjectIdProvidedReply() + "\n";
+            if (command.equals(BotCommands.PROJECT)) {
+                replyMessage = messageHandler.executeCommand(command, message, user) + "\n";
+            } else {
+                replyMessage += botMessages.getNoProjectIdProvidedReply() + "\n";
+            }
         }
         if (user.getServiceID() == null) {
-            replyMessage += botMessages.getNoServideIdProvidedReply();
+            if (command.equals(BotCommands.SERVICE)) {
+                replyMessage = messageHandler.executeCommand(command, message, user);
+            } else {
+                replyMessage += botMessages.getNoServideIdProvidedReply();
+            }
         }
 
         if (replyMessage.equals("")) {

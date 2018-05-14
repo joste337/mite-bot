@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 @Component
@@ -69,7 +70,7 @@ public class MessageHandler {
     }
 
     private String handleServiceCommand(String message, User user, int wordCount) {
-        if (wordCount < 2) {
+        if (wordCount == 2) {
             user.setServiceID(StringUtils.split(message, " ")[1]);
             userRepository.save(user);
             return botMessages.getSuccessfullySetServideIdReply();
@@ -79,7 +80,7 @@ public class MessageHandler {
     }
 
     private String handleProjectCommand(String message, User user, int wordCount) {
-        if (wordCount < 2) {
+        if (wordCount == 2) {
             user.setProjectID(StringUtils.split(message, " ")[1]);
             userRepository.save(user);
             return botMessages.getSuccessfullySetProjectIdReply();
@@ -97,16 +98,25 @@ public class MessageHandler {
 
     private String handleNewCommand(String message, User user) {
         String duration = StringUtils.split(message, " ")[1];
-        if (!isValidDuration(duration)) {
+        Optional<String> validDuration = isValidDuration(duration);
+
+        if (validDuration.isPresent()) {
+            String comment = StringUtils.split(message, " ", 3)[2];
+            miteClient.createNewEntry(validDuration.get(), comment, user);
+            return botMessages.getSuccessfullEntryReply(duration, comment);
+        } else {
             return botMessages.getInvalidDurationReply(duration);
         }
-        String comment = StringUtils.split(message, " ", 2)[2];
-        miteClient.createNewEntry(duration, comment);
-        return botMessages.getSuccessfullEntryReply(duration, comment);
     }
 
-    private boolean isValidDuration(String duration) {
-        return Pattern.compile("[0-9]:[0-5][0-9]").matcher(duration).matches();
+    private Optional<String> isValidDuration(String duration) {
+        if (!Pattern.compile("[0-9]:[0-5][0-9]").matcher(duration).matches()) {
+            return Optional.empty();
+        } else {
+            String[] split = StringUtils.split(duration, ":");
+            String time = String.valueOf(Integer.valueOf(split[0]) * 60 + Integer.valueOf(split[1]));
+            return Optional.of(time);
+        }
     }
 
 }

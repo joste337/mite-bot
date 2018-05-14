@@ -1,21 +1,3 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-\
-,src\main\java\de\jos\project\model\User.java,0\9\09c0a77b21ab165cac0bbce0c044bab63b93a2e1
-h
-8src\main\java\de\jos\project\controller\MainService.java,e\d\edce2e348848063f65b1b381aec928f9d4c3a9ed
-a
-1src\main\java\de\jos\project\model\MiteEntry.java,5\a\5a7ebc0c7f9ae4055d8281d5f1908b51e90368f8
-k
-;src\test\java\de\jos\project\controller\MiteClientTest.java,1\c\1c7c89fe2a23161f304f743ccb82d62aff9cc902
-g
-7src\main\java\de\jos\project\controller\MiteClient.java,2\e\2ede63d194d20c73ca083f10ada999e19c3a77eb
-g
-7src\main\java\de\jos\project\controller\DiscordBot.java,2\9\29212faa22f70e10435b17d3f57075d625c75021
-n
->src\test\java\de\jos\project\controller\DiscordClientTest.java,3\4\345481e53095ee0896594ca5fe228d09dc3a981f
-k
-;src\main\java\de\jos\project\controller\CommandHandler.java,e\7\e7798d821b656951622fc475c5d87636f623dab5
-j
-:src\main\java\de\jos\project\controller\DiscordClient.java,d\6\d6d0b94b44ac1b854aaf67cc106febe0fb92acb0

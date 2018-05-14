@@ -47,6 +47,7 @@ public class DiscordClient {
     }
 
     private void sendMessage(String message, IChannel channel) {
+        System.out.println("response message: " + message);
         channel.sendMessage(message);
     }
 }

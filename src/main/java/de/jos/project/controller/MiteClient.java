@@ -30,16 +30,17 @@ public class MiteClient {
         restTemplate = restTemplateBuilder.build();
     }
 
-    public void createNewEntry(String duration, String comment) {
+    public String createNewEntry(String duration, String comment, User user) {
+        String url = MITE_BASE_URL + "time_entries.json?api_key=" + user.getApiKey();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        MiteEntry miteEntry = new MiteEntry(duration, comment, mtr3ID, developmentID);
 
-
+        MiteEntry miteEntry = new MiteEntry(duration, comment, user.getProjectID(), user.getServiceID());
         HttpEntity<MiteEntry> entity = new HttpEntity<>(miteEntry, headers);
 
-        String response = restTemplate.postForObject(mitePostUrl, entity, String.class);
+        String response = restTemplate.postForObject(url, entity, String.class);
 
+        return response;
     }
 
     public String getAvailableProjects(User user) {

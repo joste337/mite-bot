@@ -23,6 +23,8 @@ public class MiteClientTest {
 
     @Test
     public void createNewEntry() {
-        miteClient.createNewEntry("100", "mite bot test");
+        User user = new User();
+
+        miteClient.createNewEntry("100", "mite bot test", user);
     }
 }
