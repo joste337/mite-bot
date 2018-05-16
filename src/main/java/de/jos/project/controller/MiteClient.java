@@ -2,6 +2,8 @@ package de.jos.project.controller;
 
 
 import de.jos.project.model.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
@@ -12,6 +14,8 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class MiteClient {
+    private static final Logger log = LoggerFactory.getLogger(MiteClient.class);
+
     private String miteUrl = "https://exozet.mite.yo.lk/projects.json?api_key=502e33dc65c3c4d2";
     private String miteUrl2 = "https://exozet.mite.yo.lk/services.json?api_key=502e33dc65c3c4d2";
     private final String MITE_BASE_URL = "https://exozet.mite.yo.lk/";
@@ -21,7 +25,7 @@ public class MiteClient {
     private String developmentID = "253445";
 
     @Autowired
-    BotMessages botMessages;
+    private BotMessages botMessages;
 
 
 
@@ -56,6 +60,7 @@ public class MiteClient {
     }
 
     public String getAvailableProjectsByName(User user, String name) {
+        log.info("projects request for name: " + name);
         String url = MITE_BASE_URL + "projects.json?api_key=" + user.getApiKey() + "&name=" + name;
         ProjectResponse[] projects = restTemplate.getForObject(url, ProjectResponse[].class);
 
@@ -83,19 +88,19 @@ public class MiteClient {
     }
 
     public String getAvailableServicesByName(User user, String name) {
-        String url = MITE_BASE_URL + "projects.json?api_key=" + user.getApiKey() + "&name=" + name;
+        log.info("service request for name: " + name);
+        String url = MITE_BASE_URL + "services.json?api_key=" + user.getApiKey() + "&name=" + name;
         ServiceResponse[] services = restTemplate.getForObject(url, ServiceResponse[].class);
 
-        if (services.length == 1) {
-            user.setServiceID(services[0].getService().getId());
-            return botMessages.getSuccessfullySetProjectIdByNameReply(services[0].getService().getName());
-        }
+        user.setServiceID(services[0].getService().getId());
+        return botMessages.getSuccessfullySetProjectIdByNameReply(services[0].getService().getName());
 
-        String response = "";
-        for (ServiceResponse serviceResponse : services) {
-            response += serviceResponse.getService().getName() + "; " + serviceResponse.getService().getId() + "\n";
-        }
-        return response;
+//        String response = "";
+//        for (ServiceResponse serviceResponse : services) {
+//            log.info("service: " + serviceResponse.getService().getName());
+//            response += serviceResponse.getService().getName() + "; " + serviceResponse.getService().getId() + "\n";
+//        }
+//        return response;
     }
 
 }

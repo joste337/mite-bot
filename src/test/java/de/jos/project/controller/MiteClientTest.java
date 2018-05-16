@@ -34,7 +34,13 @@ public class MiteClientTest {
         user.setApiKey("502e33dc65c3c4d2");
 
         System.out.println(miteClient.getAvailableProjectsByName(user, "mtr3"));
+    }
 
+    @Test
+    public void filterServices() {
+        User user = new User();
+        user.setApiKey("502e33dc65c3c4d2");
 
+        System.out.println(miteClient.getAvailableServicesByName(user, "development"));
     }
 }

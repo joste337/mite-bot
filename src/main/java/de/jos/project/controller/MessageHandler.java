@@ -47,19 +47,19 @@ public class MessageHandler {
         } else if (command.equals(BotCommands.START)) {
             return botMessages.getStartReply();
         } else if (command.equals(BotCommands.PROJECT)) {
-            return handleProjectCommand(message, user, wordCount);
+            return handleProjectCommand(message, user);
         } else if (command.equals(BotCommands.SERVICE)) {
-            return handleServiceCommand(message, user, wordCount);
+            return handleServiceCommand(message, user);
         } else if (command.equals(BotCommands.HELP)) {
             return botMessages.getHelpReply();
         } else if (command.equals(BotCommands.AUTHORIZE)) {
-            if (wordCount < 2) {
+            if (wordCount < 1) {
                 return botMessages.getInvalidCommandReply();
             } else {
                 return handleAuthorizeCommand(message, user);
             }
         } else if (command.equals(BotCommands.NEW)) {
-            if (wordCount < 3) {
+            if (wordCount < 2) {
                 return botMessages.getInvalidCommandReply();
             } else {
                 return handleNewCommand(message, user);
@@ -69,39 +69,39 @@ public class MessageHandler {
         }
     }
 
-    private String handleServiceCommand(String message, User user, int wordCount) {
-        if (wordCount == 2) {
-            user.setServiceID(StringUtils.split(message, " ")[1]);
-            userRepository.save(user);
-            return botMessages.getSuccessfullySetServideIdReply();
-        } else {
-            return miteClient.getAvailableServices(user);
-        }
+    private String handleServiceCommand(String message, User user) {
+        String reply = miteClient.getAvailableServicesByName(user, message);
+        userRepository.save(user);
+        return reply;
     }
 
-    private String handleProjectCommand(String message, User user, int wordCount) {
-        if (wordCount == 2) {
-            user.setProjectID(StringUtils.split(message, " ")[1]);
-            userRepository.save(user);
-            return botMessages.getSuccessfullySetProjectIdReply();
-        } else {
-            return miteClient.getAvailableProjects(user);
-        }
+    private String handleServicesCommand(User user) {
+        return miteClient.getAvailableServices(user);
+    }
+
+    private String handleProjectCommand(String message, User user) {
+        String reply = miteClient.getAvailableProjectsByName(user, message);
+        userRepository.save(user);
+        return reply;
+    }
+
+    private String handleProjectsCommand(User user) {
+        return miteClient.getAvailableProjects(user);
     }
 
     private String handleAuthorizeCommand(String message, User user) {
-        String apiKey = StringUtils.split(message, " ")[1];
+        String apiKey = StringUtils.split(message, " ")[0];
         user.setApiKey(apiKey);
         userRepository.save(user);
         return botMessages.getSuccessfullyAuthorizedReply();
     }
 
     private String handleNewCommand(String message, User user) {
-        String duration = StringUtils.split(message, " ")[1];
+        String duration = StringUtils.split(message, " ")[0];
         Optional<String> validDuration = isValidDuration(duration);
 
         if (validDuration.isPresent()) {
-            String comment = StringUtils.split(message, " ", 3)[2];
+            String comment = StringUtils.split(message, " ", 3)[1];
             miteClient.createNewEntry(validDuration.get(), comment, user);
             return botMessages.getSuccessfullEntryReply(duration, comment);
         } else {
