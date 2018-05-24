@@ -1,6 +1,7 @@
 package de.jos.project.controller;
 
 
+import de.jos.project.database.UserRepository;
 import de.jos.project.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,8 +27,8 @@ public class MiteClient {
 
     @Autowired
     private BotMessages botMessages;
-
-
+    @Autowired
+    private UserRepository userRepository;
 
     private RestTemplate restTemplate;
 
@@ -66,6 +67,7 @@ public class MiteClient {
 
         if (projects.length == 1) {
             user.setProjectID(projects[0].getProject().getId());
+            userRepository.save(user);
             return botMessages.getSuccessfullySetProjectIdByNameReply(projects[0].getProject().getName());
         }
 
@@ -92,15 +94,17 @@ public class MiteClient {
         String url = MITE_BASE_URL + "services.json?api_key=" + user.getApiKey() + "&name=" + name;
         ServiceResponse[] services = restTemplate.getForObject(url, ServiceResponse[].class);
 
-        user.setServiceID(services[0].getService().getId());
-        return botMessages.getSuccessfullySetProjectIdByNameReply(services[0].getService().getName());
+        if (services.length == 1) {
+            user.setProjectID(services[0].getService().getId());
+            userRepository.save(user);
+            return botMessages.getSuccessfullySetProjectIdByNameReply(services[0].getService().getName());
+        }
 
-//        String response = "";
-//        for (ServiceResponse serviceResponse : services) {
-//            log.info("service: " + serviceResponse.getService().getName());
-//            response += serviceResponse.getService().getName() + "; " + serviceResponse.getService().getId() + "\n";
-//        }
-//        return response;
+        String response = "";
+        for (ServiceResponse serviceResponse : services) {
+            response += serviceResponse.getService().getName() + "; " + serviceResponse.getService().getId() + "\n";
+        }
+        return response;
     }
 
 }

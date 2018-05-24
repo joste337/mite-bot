@@ -2,12 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40c3b87-1e81-4a97-a477-16803efd9df6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/manager/UserManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/model/CommandMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/AllProjectsCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/AllServicesCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/EmptyCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/HelpCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/NewCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/ProjectCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/RegisterCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/ServiceCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/StartCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/jos/project/controller/BotMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/controller/BotMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/jos/project/controller/DiscordClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/controller/DiscordClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/jos/project/controller/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/controller/MainService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/jos/project/controller/MessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/controller/MessageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/jos/project/controller/MessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/manager/MessageHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/jos/project/controller/MiteClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/jos/project/controller/MiteClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/de/jos/project/controller/MiteClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/de/jos/project/controller/MiteClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/jos/project/model/BotCommands.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/de/jos/project/controller/MessageHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/de/jos/project/controller/MessageHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/jos/project/controller/MessageHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/jos/project/controller/MessageHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/jos/project/controller/MiteClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/jos/project/controller/MiteClient.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,20 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MiteClientTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/de/jos/project/controller/MiteClientTest.java">
+      <file leaf-file-name="ServiceCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/ServiceCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MiteClient.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/MiteClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="94" column="17" lean-forward="true" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
+            <state relative-caret-position="102">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -41,11 +48,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="AllProjectsCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/AllProjectsCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+            <state relative-caret-position="136">
+              <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllServicesCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/AllServicesCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,17 +75,21 @@
       <file leaf-file-name="BotMessages.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/BotMessages.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="54" column="56" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="56" />
+            <state relative-caret-position="477">
+              <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+              <folding>
+                <element signature="e#1641#1642#0" expanded="true" />
+                <element signature="e#1685#1686#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectResponse.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/ProjectResponse.java">
+      <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/Command.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="102">
+              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,43 +97,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MiteEntry.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/MiteEntry.java">
+      <file leaf-file-name="EmptyCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/EmptyCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DiscordClientTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/de/jos/project/controller/DiscordClientTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DiscordClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/DiscordClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/MessageHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-420">
-              <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+            <state relative-caret-position="85">
+              <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding>
-                <element signature="e#2964#2965#0" expanded="true" />
-                <element signature="e#3028#3029#0" expanded="true" />
-                <element signature="e#3284#3285#0" expanded="true" />
-                <element signature="e#3344#3345#0" expanded="true" />
+                <element signature="e#214#215#0" expanded="true" />
+                <element signature="e#241#242#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HelpCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/HelpCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="45" lean-forward="true" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+              <folding>
+                <element signature="e#213#214#0" expanded="true" />
+                <element signature="e#240#241#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -116,8 +126,32 @@
       <file leaf-file-name="MainService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/MainService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+            <state relative-caret-position="289">
+              <caret line="26" column="59" lean-forward="true" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegisterCommand.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/RegisterCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/CommandMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="42" column="16" lean-forward="true" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,6 +163,7 @@
       <list>
         <option value="Enum" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -139,6 +174,7 @@
       <find>triton</find>
       <find>ichannel</find>
       <find>optional</find>
+      <find>@Autowired</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Jörg Stenger\.m2\repository\com\discord4j\Discord4J\2.10.1\Discord4J-2.10.1.jar!\sx\blah\discord</dir>
@@ -150,15 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Application.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/MainController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/MiteEntry.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/MiteClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Commands.java" />
-        <option value="$PROJECT_DIR$/src/main/java/MessageHandlerException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/ErrorControllerAdvice.java" />
-        <option value="$PROJECT_DIR$/src/main/java/exception/MessageHandlerException.java" />
-        <option value="$PROJECT_DIR$/src/test/java/controller/MainControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/MessageHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/MainService.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/jos/project/controller/MainControllerTest.java" />
@@ -185,16 +212,31 @@
         <option value="$PROJECT_DIR$/src/main/java/de/jos/project/database/UserRepo.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/jos/project/database/UserRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/Commands.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/BotCommands.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/jos/project/controller/DiscordClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/ProjectResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/controller/BotMessages.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/controller/MessageHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/controller/MainService.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/jos/project/controller/MiteClientTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/controller/MessageHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/controller/BotMessages.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/CommangMessage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/BotCommands.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/EmptyCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/HelpCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/StartCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/AuthorizeCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/CommandMessage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/manager/UserManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/NewCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/controller/MainService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/Command.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/AllProjectsCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/AllServicesCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/manager/MessageHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/jos/project/controller/MiteClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/ServiceCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/ProjectCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/RegisterCommand.java" />
       </list>
     </option>
   </component>
@@ -217,9 +259,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -269,12 +308,31 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mitebot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mitebot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mitebot" type="b2602c69:ProjectViewProjectNode" />
               <item name="mitebot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="commands" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mitebot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mitebot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -291,28 +349,22 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mitebot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mitebot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -339,7 +391,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MiteClientTest.filterServices">
+  <component name="RunManager" selected="JUnit.MiteClientTest.filterProjects (1)">
     <configuration name="Application (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.jos.project.Application" />
       <module name="mitebot" />
@@ -365,11 +417,11 @@
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="MainServiceTest.shouldNotCreateNewEntryForInvalidDuration (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainServiceTest.shouldNotCreateNewEntryForInvalidDuration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mite-bot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="de.jos.project.controller.*" />
+          <option name="PATTERN" value="de.jos.project.manager.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -388,11 +440,11 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="MiteClientTest.filterProjects (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MiteClientTest.filterProjects" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mite-bot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="de.jos.project.controller.*" />
+          <option name="PATTERN" value="de.jos.project.manager.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -415,7 +467,7 @@
       <module name="mite-bot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="de.jos.project.controller.*" />
+          <option name="PATTERN" value="de.jos.project.manager.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -481,8 +533,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MiteClientTest.filterServices" />
         <item itemvalue="JUnit.MiteClientTest.filterProjects (1)" />
+        <item itemvalue="JUnit.MiteClientTest.filterServices" />
         <item itemvalue="JUnit.MainServiceTest.shouldNotCreateNewEntryForInvalidDuration (1)" />
         <item itemvalue="Application.Application" />
         <item itemvalue="Application.Application (1)" />
@@ -508,9 +560,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MiteClientTest_filterProjects_(1) - 2018.05.14 at 16h 40m 24s.xml">
-      <configuration name="MiteClientTest.filterProjects (1)" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MiteClientTest_filterProjects_(1) - 2018.05.14 at 16h 41m 26s.xml">
       <configuration name="MiteClientTest.filterProjects (1)" configurationId="JUnit" />
     </history-entry>
@@ -538,6 +587,9 @@
     <history-entry file="MiteClientTest_filterServices - 2018.05.16 at 15h 26m 31s.xml">
       <configuration name="MiteClientTest.filterServices" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MiteClientTest_filterProjects_(1) - 2018.05.16 at 15h 38m 30s.xml">
+      <configuration name="MiteClientTest.filterProjects (1)" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -545,7 +597,6 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32943678" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -553,12 +604,12 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32943678" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32943678" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32943678" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18958333" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18958333" />
       <window_info anchor="bottom" id="SonarLint" order="8" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32943678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -567,6 +618,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3995749" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32943678" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -595,68 +647,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/jos/project/controller/MainServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/ErrorController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/MiteEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/ErrorControllerAdvice.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/MessageHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="53" lean-forward="true" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/MainService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="38" lean-forward="true" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/MiteClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.5.RELEASE/spring-context-5.0.5.RELEASE.jar!/org/springframework/stereotype/Service.class" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/jos/MainControllerTest.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar!/org/apache/commons/lang3/StringUtils.class" />
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar!/com/fasterxml/jackson/annotation/JsonValue.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar!/com/fasterxml/jackson/annotation/JsonProperty.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="19" column="16" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/5.0.5.RELEASE/spring-test-5.0.5.RELEASE.jar!/org/springframework/test/context/junit4/SpringJUnit4ClassRunner.class" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -710,58 +700,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/ServiceResponse.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/de/jos/project/controller/DiscordClientTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/BotCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/jos/project/controller/MainServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/MiteEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/ProjectResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/BotMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="54" column="56" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="56" />
+        <state relative-caret-position="34">
+          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -772,51 +714,237 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/DiscordClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/MainService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/jos/project/controller/DiscordClientTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/de/jos/project/controller/MiteClientTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
+        <state relative-caret-position="646">
           <caret line="43" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/MessageHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/de/jos/project/controller/MainServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-420">
-          <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+        <state relative-caret-position="170">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/MiteEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/ServiceResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/CommunicationClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/ProjectResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
-            <element signature="e#2964#2965#0" expanded="true" />
-            <element signature="e#3028#3029#0" expanded="true" />
-            <element signature="e#3284#3285#0" expanded="true" />
-            <element signature="e#3344#3345#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/DiscordClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/BotCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/StartCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#214#215#0" expanded="true" />
+            <element signature="e#241#242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/AuthorizeCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/manager/UserManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/manager/MessageHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/MiteClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="94" column="17" lean-forward="true" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
+        <state relative-caret-position="202">
+          <caret line="95" column="8" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/NewCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="36" column="55" lean-forward="true" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/ProjectCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/HelpCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="45" lean-forward="true" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+          <folding>
+            <element signature="e#213#214#0" expanded="true" />
+            <element signature="e#240#241#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/ServiceCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/MainService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="26" column="59" lean-forward="true" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/AllProjectsCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/AllServicesCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/EmptyCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#214#215#0" expanded="true" />
+            <element signature="e#241#242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/controller/BotMessages.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+          <folding>
+            <element signature="e#1641#1642#0" expanded="true" />
+            <element signature="e#1685#1686#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/CommandMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="42" column="16" lean-forward="true" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jos/project/model/commands/RegisterCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

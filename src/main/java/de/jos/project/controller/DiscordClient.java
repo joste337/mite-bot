@@ -40,7 +40,7 @@ public class DiscordClient {
         if (!userRepository.existsById(userId)) {
             User newUser = new User(userId, event.getAuthor().getName(), channel.getLongID());
             userRepository.save(newUser);
-            sendMessage(botMessages.getNewUserReply(event.getAuthor().getName()), channel);
+            sendMessage(botMessages.getUserWelcomereply(event.getAuthor().getName()), channel);
         } else {
             sendMessage(mainService.handleMessage(event.getMessage().getContent(), userRepository.findById(userId).get()), channel);
         }
