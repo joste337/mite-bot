@@ -1,6 +1,7 @@
 package de.jos.project.manager;
 
 import de.jos.project.controller.BotMessages;
+import de.jos.project.database.UserRepository;
 import de.jos.project.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,8 @@ import java.util.Optional;
 public class UserManager {
     @Autowired
     private BotMessages botMessages;
+    @Autowired
+    private UserRepository userRepository;
 
 
     public Optional<String> isNotVeriefiedUser(User user) {
@@ -33,4 +36,15 @@ public class UserManager {
         }
     }
 
+    public Optional<String> isNotRegisteredUser(User user) {
+        if (user.getApiKey() == null) {
+            return Optional.of(botMessages.getNoApiKeyProvidedReply());
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
 }

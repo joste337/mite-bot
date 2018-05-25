@@ -1,7 +1,6 @@
 package de.jos.project.controller;
 
 
-import de.jos.project.manager.MessageHandler;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +14,4 @@ import static junit.framework.TestCase.assertEquals;
 @SpringBootTest
 public class MessageHandlerTest {
 
-    @Autowired
-    private MessageHandler messageHandler;
-
-
-    @Test
-    public void shouldReturnProjectCommand() {
-
-        BotCommands command = messageHandler.getCommandMessage("projekt");
-
-        assertEquals(BotCommands.PROJECT, command);
-    }
 }

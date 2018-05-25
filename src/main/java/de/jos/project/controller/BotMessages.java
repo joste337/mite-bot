@@ -42,10 +42,11 @@ public class BotMessages {
     }
 
     public String getStartReply() {
+        System.out.println("getting start reply");
         return "start reply";
     }
 
-    public String getSuccessfullyAuthorizedReply() {
+    public String getSuccessfullyRegisteredReply() {
         return "Your api-key has been set successfully!";
     }
 
@@ -63,5 +64,9 @@ public class BotMessages {
 
     public String getSuccessfullySetProjectIdByNameReply(String projectName) {
         return "Only one project found for specified name. So I set '" + projectName + "' as your default project!";
+    }
+
+    public String getCommandFailedReply() {
+        return " ";
     }
 }

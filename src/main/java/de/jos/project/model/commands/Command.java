@@ -1,9 +1,11 @@
 package de.jos.project.model.commands;
 
-import de.jos.project.controller.MiteClient;
 import de.jos.project.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface Command {
-    String executeCommandAndGetReply(String commandMessage, User user);
+    String executeCommandAndGetReply(String userMessage, User user);
+
+    boolean isValidCommand(String userMessage);
 }

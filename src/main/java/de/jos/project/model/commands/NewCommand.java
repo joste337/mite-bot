@@ -6,7 +6,6 @@ import de.jos.project.model.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class NewCommand implements Command {
@@ -16,26 +15,34 @@ public class NewCommand implements Command {
     private MiteClient miteClient;
 
     @Override
-    public String executeCommandAndGetReply(String commandMessage, User user) {
-        String duration = StringUtils.split(commandMessage, " ")[0];
-        Optional<String> validDuration = isValidDuration(duration);
-
-        if (validDuration.isPresent()) {
-            String comment = StringUtils.split(commandMessage, " ", 2)[1];
-            miteClient.createNewEntry(validDuration.get(), comment, user);
-            return botMessages.getSuccessfullEntryReply(duration, comment);
-        } else {
-            return botMessages.getInvalidDurationReply(duration);
+    public String executeCommandAndGetReply(String userMessage, User user) {
+        if (!isValidCommand(userMessage)) {
+            return botMessages.getCommandFailedReply();
         }
+        String[] splitMessage = StringUtils.split(userMessage, " ");
+        String durationInMinutes = getDurationInMinutes(splitMessage[1]);
+        String comment = splitMessage[2];
+
+        miteClient.createNewEntry(durationInMinutes, comment, user);
+        return botMessages.getSuccessfullEntryReply(durationInMinutes, comment);
     }
 
-    private Optional<String> isValidDuration(String duration) {
-        if (!Pattern.compile("[0-9]:[0-5][0-9]").matcher(duration).matches()) {
-            return Optional.empty();
-        } else {
-            String[] split = StringUtils.split(duration, ":");
-            String time = String.valueOf(Integer.valueOf(split[0]) * 60 + Integer.valueOf(split[1]));
-            return Optional.of(time);
+    @Override
+    public boolean isValidCommand(String userMessage) {
+        String[] splitMessage = StringUtils.split(userMessage, " ");
+        if (splitMessage.length > 3) {
+            return false;
         }
+        return isValidDuration(splitMessage[2]);
     }
+
+    private boolean isValidDuration(String duration) {
+        return !Pattern.compile("[0-9]:[0-5][0-9]").matcher(duration).matches();
+    }
+
+    private String getDurationInMinutes(String duration) {
+        String[] split = StringUtils.split(duration, ":");
+        return String.valueOf(Integer.valueOf(split[0]) * 60 + Integer.valueOf(split[1]));
+    }
+
 }
