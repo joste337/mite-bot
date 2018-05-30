@@ -30,5 +30,9 @@ public class ServiceResponse {
         public void setName(String name) {
             this.name = name;
         }
+
+        public String toString() {
+            return "Service-name: " + name + "; Service-ID: " + id;
+        }
     }
 }

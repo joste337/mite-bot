@@ -16,12 +16,6 @@ public class MiteClientTest {
     MiteClient miteClient;
 
     @Test
-    public void test() {
-        User user = new User("","",2);
-        miteClient.getAvailableProjects(user);
-    }
-
-    @Test
     public void createNewEntry() {
         User user = new User();
 

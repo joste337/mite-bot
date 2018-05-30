@@ -5,16 +5,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CommandBeanInitializer {
-    @Bean("projects")
-    public Command getProjectsCommand() {
-        return new ProjectCommand();
-    }
-
-    @Bean("services")
-    public Command getServicesCommand() {
-        return new AllServicesCommand();
-    }
-
     @Bean("help")
     public Command getHelpCommand() {
         return new HelpCommand();
@@ -43,5 +33,10 @@ public class CommandBeanInitializer {
     @Bean("start")
     public Command getStartCommand() {
         return new StartCommand();
+    }
+
+    @Bean("status")
+    public Command getStatusCommand() {
+        return new StatusCommand();
     }
 }

@@ -17,7 +17,7 @@ public class NewCommand implements Command {
     @Override
     public String executeCommandAndGetReply(String userMessage, User user) {
         if (!isValidCommand(userMessage)) {
-            return botMessages.getCommandFailedReply();
+            return botMessages.getInvalidCommandArgumentsReply();
         }
         String[] splitMessage = StringUtils.split(userMessage, " ");
         String durationInMinutes = getDurationInMinutes(splitMessage[1]);
@@ -30,14 +30,14 @@ public class NewCommand implements Command {
     @Override
     public boolean isValidCommand(String userMessage) {
         String[] splitMessage = StringUtils.split(userMessage, " ");
-        if (splitMessage.length > 3) {
+        if (splitMessage.length < 3) {
             return false;
         }
-        return isValidDuration(splitMessage[2]);
+        return isValidDuration(splitMessage[1]);
     }
 
     private boolean isValidDuration(String duration) {
-        return !Pattern.compile("[0-9]:[0-5][0-9]").matcher(duration).matches();
+        return Pattern.compile("[0-9]:[0-5][0-9]").matcher(duration).matches();
     }
 
     private String getDurationInMinutes(String duration) {

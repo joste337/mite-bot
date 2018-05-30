@@ -11,11 +11,12 @@ public class User {
     private String name;
     private long discordChannelID;
     private String apiKey;
-    private String projectID;
-    private String serviceID;
+    private String projectName;
+    private String projectId;
+    private String serviceName;
+    private String serviceId;
 
     public User() {
-
     }
 
     public User(String id, String name, long discordChannelID) {
@@ -24,11 +25,13 @@ public class User {
         this.discordChannelID = discordChannelID;
     }
 
-    public User(String id, String apiToken, String projectID, String serviceID) {
+    public User(String id, String apiToken, String projectName, String projectId, String serviceName, String serviceId) {
         this.id = id;
         this.apiKey = apiToken;
-        this.projectID = projectID;
-        this.serviceID = serviceID;
+        this.projectId = projectId;
+        this.projectName = projectName;
+        this.serviceId = serviceId;
+        this.serviceName = serviceName;
     }
 
     public String getId() {
@@ -47,20 +50,36 @@ public class User {
         this.apiKey = apiKey;
     }
 
-    public String getProjectID() {
-        return projectID;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setProjectID(String projectID) {
-        this.projectID = projectID;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
-    public String getServiceID() {
-        return serviceID;
+    public String getProjectId() {
+        return projectId;
     }
 
-    public void setServiceID(String serviceID) {
-        this.serviceID = serviceID;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public String getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(String serviceId) {
+        this.serviceId = serviceId;
     }
 
     public String getName() {
@@ -79,7 +98,20 @@ public class User {
         this.discordChannelID = discordChannelID;
     }
 
-    public String toSQLString() {
-        return "('" + this.id + "', '" + this.name + "', '" + this.discordChannelID + "', '" + this.apiKey + "', '" + this.projectID + "', '" + this.serviceID + "')";
+
+    public String toReplyString() {
+        String project;
+        String service;
+        if (projectId == null) {
+            project = "You didn't set a project yet!";
+        } else {
+            project = "Your current project: " + projectName + "; " + projectId;
+        }
+        if (this.serviceId == null) {
+            service = "You didn't set a service yet!";
+        } else {
+            service = "Your current service: " + serviceName + "; " + serviceId;
+        }
+        return project + "\n" + service;
     }
 }

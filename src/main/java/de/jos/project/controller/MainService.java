@@ -3,9 +3,9 @@ package de.jos.project.controller;
 import de.jos.project.manager.UserManager;
 import de.jos.project.model.User;
 import de.jos.project.model.commands.*;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -25,11 +25,10 @@ public class MainService implements ApplicationContextAware {
 
 
     public String handleMessage(String message, User user) {
-        LOGGER.debug("Creating CommandMessage from user-input");
         Command command;
 
         try {
-            command = appContext.getBean(message, Command.class);
+            command = appContext.getBean(StringUtils.split(message, " ")[0], Command.class);
         } catch (NoSuchBeanDefinitionException e) {
             return botMessages.getInvalidCommandReply();
         }

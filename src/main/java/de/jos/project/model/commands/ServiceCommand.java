@@ -14,15 +14,16 @@ public class ServiceCommand implements Command {
 
     @Override
     public String executeCommandAndGetReply(String userMessage, User user) {
-        if (isValidCommand(userMessage)) {
-            return botMessages.getCommandFailedReply();
+        if (!isValidCommand(userMessage)) {
+            return botMessages.getInvalidCommandArgumentsReply();
         }
 
-        return miteClient.getAvailableServicesByName(user, userMessage);
+        return miteClient.getAvailableServicesByName(user, StringUtils.split(userMessage, " ")[1]);
     }
 
     @Override
     public boolean isValidCommand(String userMessage) {
-        return StringUtils.split(userMessage, " ").length != 2;
+        String[] splitMessage = StringUtils.split(userMessage, " ");
+        return splitMessage.length > 1 && splitMessage[1].length() > 2;
     }
 }

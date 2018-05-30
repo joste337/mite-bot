@@ -36,5 +36,9 @@ public class ProjectResponse {
         public void setName(String name) {
             this.name = name;
         }
+
+        public String toString() {
+            return "Project-name: " + name + "; Project-ID: " + id;
+        }
     }
 }

@@ -22,10 +22,10 @@ public class UserManager {
         if (user.getApiKey() == null) {
             replyMessage += botMessages.getNoApiKeyProvidedReply() + "\n";
         }
-        if (user.getProjectID() == null) {
+        if (user.getProjectId() == null) {
             replyMessage += botMessages.getNoProjectIdProvidedReply() + "\n";
         }
-        if (user.getServiceID() == null) {
+        if (user.getServiceId() == null) {
             replyMessage += botMessages.getNoServideIdProvidedReply();
         }
 

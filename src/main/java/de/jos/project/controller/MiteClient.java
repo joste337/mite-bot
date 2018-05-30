@@ -15,12 +15,9 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class MiteClient {
-    private static final Logger log = LoggerFactory.getLogger(MiteClient.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MiteClient.class);
 
-    private String miteUrl = "https://exozet.mite.yo.lk/projects.json?api_key=502e33dc65c3c4d2";
-    private String miteUrl2 = "https://exozet.mite.yo.lk/services.json?api_key=502e33dc65c3c4d2";
-    private final String MITE_BASE_URL = "https://exozet.mite.yo.lk/";
-    private String mitePostUrl = "https://exozet.mite.yo.lk/time_entries.json?api_key=502e33dc65c3c4d2";
+    private static final String MITE_BASE_URL = "https://exozet.mite.yo.lk/";
 
     private String mtr3ID = "2351287";
     private String developmentID = "253445";
@@ -41,70 +38,72 @@ public class MiteClient {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        MiteEntry miteEntry = new MiteEntry(duration, comment, user.getProjectID(), user.getServiceID());
+        MiteEntry miteEntry = new MiteEntry(duration, comment, user.getProjectId(), user.getServiceId());
         HttpEntity<MiteEntry> entity = new HttpEntity<>(miteEntry, headers);
 
-        String response = restTemplate.postForObject(url, entity, String.class);
-
-        return response;
-    }
-
-    public String getAvailableProjects(User user) {
-        String url = MITE_BASE_URL + "projects.json?api_key=" + user.getApiKey();
-        ProjectResponse[] projects = restTemplate.getForObject(url, ProjectResponse[].class);
-
-        String response = "";
-        for (ProjectResponse projectResponse : projects) {
-            response += projectResponse.getProject().getName() + "; " + projectResponse.getProject().getId() + "\n";
+        try {
+            return restTemplate.postForObject(url, entity, String.class);
+        } catch (Exception e) {
+            LOGGER.error("Failed to execute new-Command: {}", e.getMessage());
+            return botMessages.getCommandFailedReply();
         }
-        return response;
     }
 
     public String getAvailableProjectsByName(User user, String name) {
-        log.info("projects request for name: " + name);
+        LOGGER.info("projects request for name: {}", name);
         String url = MITE_BASE_URL + "projects.json?api_key=" + user.getApiKey() + "&name=" + name;
-        ProjectResponse[] projects = restTemplate.getForObject(url, ProjectResponse[].class);
-
-        if (projects.length == 1) {
-            user.setProjectID(projects[0].getProject().getId());
-            userRepository.save(user);
-            return botMessages.getSuccessfullySetProjectIdByNameReply(projects[0].getProject().getName());
+        ProjectResponse[] projects;
+        try {
+            projects = restTemplate.getForObject(url, ProjectResponse[].class);
+        } catch (Exception e) {
+            System.out.println("failed to execute project command: " + e.getMessage());
+            LOGGER.error("Failed to execute project-Command: {}", e.getMessage());
+            return botMessages.getCommandFailedReply();
         }
 
-        String response = "";
+        StringBuilder responseBuilder = new StringBuilder();
+        user.setProjectId(projects[0].getProject().getId());
+        user.setProjectName(projects[0].getProject().getName());
+        responseBuilder.append(botMessages.getSuccessfullySetProjectIdByNameReply(projects[0].getProject().getName()));
+        responseBuilder.append("\n Projects found:\n");
+
         for (ProjectResponse projectResponse : projects) {
-            response += projectResponse.getProject().getName() + "; " + projectResponse.getProject().getId() + "\n";
+            responseBuilder.append(projectResponse.getProject().getName()).append("; ").append(projectResponse.getProject().getId()).append("\n");
         }
-        return response;
-    }
-
-    public String getAvailableServices(User user) {
-        String url = MITE_BASE_URL + "projects.json?api_key=" + user.getApiKey();
-        ServiceResponse[] services = restTemplate.getForObject(url, ServiceResponse[].class);
-
-        String response = "";
-        for (ServiceResponse serviceResponse : services) {
-            response += serviceResponse.getService().getName() + "; " + serviceResponse.getService().getId() + "\n";
-        }
-        return response;
+        return responseBuilder.toString();
     }
 
     public String getAvailableServicesByName(User user, String name) {
-        log.info("service request for name: " + name);
         String url = MITE_BASE_URL + "services.json?api_key=" + user.getApiKey() + "&name=" + name;
-        ServiceResponse[] services = restTemplate.getForObject(url, ServiceResponse[].class);
-
-        if (services.length == 1) {
-            user.setProjectID(services[0].getService().getId());
-            userRepository.save(user);
-            return botMessages.getSuccessfullySetProjectIdByNameReply(services[0].getService().getName());
+        ServiceResponse[] services;
+        try {
+            services = restTemplate.getForObject(url, ServiceResponse[].class);
+        } catch (Exception e) {
+            LOGGER.error("Failed to execute service-Command: {}", e.getMessage());
+            return botMessages.getCommandFailedReply();
         }
 
-        String response = "";
+        StringBuilder responseBuilder = new StringBuilder();
+        user.setServiceId(services[0].getService().getId());
+        user.setServiceName(services[0].getService().getName());
+        responseBuilder.append(botMessages.getSuccessfullySetServiceIdByNameReply(services[0].getService().getName()));
+        responseBuilder.append("\n Services found:\n");
+
+
         for (ServiceResponse serviceResponse : services) {
-            response += serviceResponse.getService().getName() + "; " + serviceResponse.getService().getId() + "\n";
+            responseBuilder.append(serviceResponse.getService().getName()).append("; ").append(serviceResponse.getService().getId()).append("\n");
         }
-        return response;
+        return responseBuilder.toString();
     }
 
+    public String verifyApiKey(User user, String apiKey) {
+        String url = MITE_BASE_URL + "myself.json?api_key=" + apiKey;
+        try {
+            restTemplate.getForObject(url, Object.class);
+            user.setApiKey(apiKey);
+            return botMessages.getSuccessfullyRegisteredReply();
+        } catch (Exception e) {
+            return botMessages.getInvalidApiKeyReply();
+        }
+    }
 }
